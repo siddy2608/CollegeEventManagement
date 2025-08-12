@@ -1,0 +1,48 @@
+// Import this file into https://dbdiagram.io
+
+Venues {
+  int Venue_ID [pk]
+  string Name
+  string Location
+  int Capacity
+}
+
+Organizers {
+  int Organizer_ID [pk]
+  string Name
+  string Department
+  string Email
+  string Phone
+}
+
+Events {
+  int Event_ID [pk]
+  string Name
+  date Date
+  time Time
+  int Venue_ID
+  int Organizer_ID
+  int Capacity
+}
+
+Participants {
+  int Participant_ID [pk]
+  string Name
+  string Department
+  string Email
+  string Phone
+}
+
+Registrations {
+  int Registration_ID [pk]
+  int Event_ID
+  int Participant_ID
+  date Registration_Date
+}
+
+Ref: Events.Venue_ID > Venues.Venue_ID
+Ref: Events.Organizer_ID > Organizers.Organizer_ID
+Ref: Registrations.Event_ID > Events.Event_ID
+Ref: Registrations.Participant_ID > Participants.Participant_ID
+
+
